@@ -27,7 +27,7 @@ A fast, static portfolio and resume site for a Senior Software Engineer (AI infr
 - **Skills, experience, projects, achievements:** edit the data arrays at the top of `script.js`.
 - **Headline, about text, contact, stats:** edit `index.html`. Stat numbers are the `data-n` attributes in the `#stats` block.
 - **Colors:** change the CSS variables at the top of `style.css` (`:root` for dark, `:root[data-theme="light"]` for light).
-- **LinkedIn link:** replace `YOUR-LINKEDIN` in `index.html` (it appears in the hero and the contact section).
+- **Links:** LinkedIn and GitHub URLs are in the hero and contact section of `index.html`.
 
 ## Run locally
 Open `index.html` in a browser, or serve the folder:
