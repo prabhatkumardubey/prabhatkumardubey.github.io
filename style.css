@@ -61,3 +61,33 @@ footer{text-align:center;color:var(--muted);padding:4rem 1rem 2rem;font-size:.9r
   .hidden{display:block!important}
   a{color:#000;text-decoration:none}
 }
+
+/* v2: hiring-team features */
+#progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(var(--p,0));transform-origin:0 50%;background:var(--accent);z-index:20}
+.status{display:inline-flex;align-items:center;gap:.5rem;margin:0 0 1rem;padding:.3rem .8rem;border:1px solid var(--line);border-radius:99px;background:var(--surface);font-size:.9rem}
+.status i{width:.6rem;height:.6rem;border-radius:50%;background:#3ecf8e;box-shadow:0 0 0 3px color-mix(in srgb,#3ecf8e 30%,transparent)}
+.cta{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0}
+a.btn{text-decoration:none;display:inline-block}
+a.btn.ghost{color:var(--text)}
+.btn:hover{filter:brightness(1.1)}
+.btn.small{padding:.25rem .7rem;font-size:.85rem;margin:-.5rem 0 1rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:2rem}
+.stats div{background:var(--surface);padding:1.1rem 1.2rem}
+.stats b{display:block;font:700 2.3rem/1.1 "Bricolage Grotesque",sans-serif;color:var(--accent);font-variant-numeric:tabular-nums}
+.stats span{color:var(--muted);font-size:.88rem}
+.hint{margin:-.6rem 0 1rem}
+.tags span{cursor:pointer;transition:background .15s,border-color .15s}
+.tags span:hover{border-color:var(--accent)}
+.tags span.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.dim{opacity:.28}
+.hit{border-color:var(--accent)!important}
+#skillbar{position:sticky;top:3.6rem;z-index:5;display:none;gap:.8rem;align-items:center;margin:0 0 1rem;padding:.5rem 1rem;background:var(--surface);border:1px solid var(--accent);border-radius:var(--r)}
+#skillbar.show{display:flex}
+.nav nav a[aria-current="true"]{color:var(--accent)}
+.card{transition:border-color .15s,transform .15s}
+#projects .card:hover{border-color:var(--accent)}
+@media (max-width:760px){
+  .nav{flex-wrap:wrap}
+  .nav nav{display:flex;order:3;width:100%;overflow-x:auto;flex-wrap:nowrap;white-space:nowrap}
+}
+@media print{#progress,.status,.cta,.hint,#skillbar,#contact .cta,#expand{display:none}.stats{border-color:#999}.stats b{font-size:16pt}.dim{opacity:1}}

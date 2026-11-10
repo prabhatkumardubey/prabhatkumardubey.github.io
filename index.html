@@ -11,11 +11,12 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="progress" aria-hidden="true"></div>
 <header class="nav">
   <a class="brand" href="#top">Prabhat Dubey</a>
   <nav aria-label="Sections">
     <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
-    <a href="#projects">Projects</a><a href="#patents">Patents</a><a href="#education">Education</a>
+    <a href="#projects">Projects</a><a href="#patents">Patents</a><a href="#education">Education</a><a href="#contact">Contact</a>
   </nav>
   <div class="actions">
     <button id="theme" class="btn ghost" aria-label="Toggle light or dark theme">Theme</button>
@@ -25,6 +26,7 @@
 
 <main id="top">
 <section class="hero">
+  <p class="status"><i></i>Open to senior and staff-level opportunities</p>
   <h1>Prabhat Dubey</h1>
   <p class="headline">Senior Software Engineer • AI Infrastructure • Distributed Systems • LLM/GenAI • Data Protection</p>
   <ul class="badges">
@@ -36,6 +38,17 @@
     <a href="https://www.linkedin.com/in/YOUR-LINKEDIN" rel="noopener">LinkedIn</a> ·
     <a href="https://github.com/prabhatkumardubey" rel="noopener">GitHub</a>
   </p>
+  <div class="cta">
+    <a class="btn" href="#contact">Get in touch</a>
+    <button class="btn ghost" id="print2" type="button">Download PDF resume</button>
+  </div>
+  <div class="stats" id="stats">
+    <div><b data-n="9" data-s="+">0</b><span>years building production systems</span></div>
+    <div><b data-n="13">0</b><span>patents filed, 10 granted</span></div>
+    <div><b data-n="1000" data-s="+">0</b><span>edge devices onboarded automatically</span></div>
+    <div><b data-n="99.9" data-s="%" data-d="1">0</b><span>restore reliability, 50+ enterprise customers</span></div>
+    <div><b data-n="45" data-s="%">0</b><span>faster failure diagnosis with LLM + RAG</span></div>
+  </div>
 </section>
 
 <section id="about">
@@ -43,8 +56,8 @@
   <p class="prose">Senior Software Engineer with 9+ years of experience building high-throughput distributed systems, AI/ML infrastructure, and cloud-native platforms at scale. Architected enterprise-grade solutions processing petabyte-scale data across AWS and Azure ecosystems. Currently building LLM-powered intelligent systems with RAG pipelines and AI agents for enterprise automation. Inventor on 13 patents (10 granted) in cloud storage and virtualization. Proven track record of shipping zero-downtime features, driving cross-functional engineering teams, and integrating AI capabilities into production systems. Currently pursuing M.Tech in AI/ML from BITS Pilani.</p>
 </section>
 
-<section id="skills"><h2>Technical skills</h2><div id="skill-grid" class="grid"></div></section>
-<section id="experience"><h2>Experience</h2><div id="timeline" class="timeline"></div></section>
+<section id="skills"><h2>Technical skills</h2><p class="muted hint">Select a skill to see the projects and roles where it was used.</p><div id="skill-grid" class="grid"></div></section>
+<section id="experience"><h2>Experience</h2><button id="expand" class="btn ghost small" type="button">Expand all</button><div id="timeline" class="timeline"></div></section>
 <section id="projects">
   <h2>Key projects</h2>
   <div id="filters" class="filters" role="group" aria-label="Filter projects by domain"></div>
@@ -68,6 +81,17 @@
 </section>
 
 <section id="leadership"><h2>Achievements &amp; leadership</h2><ul id="ach" class="list"></ul></section>
+<section id="contact">
+  <h2>Let's talk</h2>
+  <p class="prose">I'm interested in roles building AI infrastructure, distributed systems and data protection platforms. The quickest way to reach me is email.</p>
+  <div class="cta">
+    <a class="btn" href="mailto:prabhatdubey.maildrop@gmail.com">Email me</a>
+    <button class="btn ghost" id="copy" type="button">Copy email address</button>
+    <a class="btn ghost" href="https://www.linkedin.com/in/YOUR-LINKEDIN" rel="noopener">LinkedIn</a>
+    <a class="btn ghost" href="https://github.com/prabhatkumardubey" rel="noopener">GitHub</a>
+  </div>
+  <p class="muted" id="copied" role="status"></p>
+</section>
 </main>
 
 <footer><p>© <span id="yr"></span> Prabhat Dubey</p></footer>

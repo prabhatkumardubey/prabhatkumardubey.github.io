@@ -88,3 +88,70 @@
   });
   $("print").addEventListener("click", function () { window.print(); });
 })();
+
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); }, $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // reading progress
+  var bar = $("#progress");
+  function prog() { var h = document.documentElement; bar.style.setProperty("--p", (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight)).toFixed(3)); }
+  addEventListener("scroll", prog, { passive: true }); prog();
+
+  // count-up (the one moment of motion)
+  function fmt(v, d) { return d ? v.toFixed(d) : Math.round(v).toLocaleString("en-US"); }
+  function run(b) {
+    var n = +b.dataset.n, d = +b.dataset.d || 0, s = b.dataset.s || "";
+    if (calm) { b.textContent = fmt(n, d) + s; return; }
+    var t0 = performance.now();
+    (function tick(t) { var k = Math.min(1, (t - t0) / 1200); b.textContent = fmt(n * (1 - Math.pow(1 - k, 3)), d) + (k === 1 ? s : ""); if (k < 1) requestAnimationFrame(tick); })(t0);
+  }
+  var io = new IntersectionObserver(function (e, o) { e.forEach(function (x) { if (x.isIntersecting) { $$("b", x.target).forEach(run); o.disconnect(); } }); }, { threshold: .4 });
+  io.observe($("#stats"));
+  addEventListener("beforeprint", function () { $$("#stats b").forEach(function (b) { b.textContent = fmt(+b.dataset.n, +b.dataset.d || 0) + (b.dataset.s || ""); }); });
+
+  // active section in nav
+  var links = $$(".nav nav a");
+  var spy = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) links.forEach(function (a) { a.setAttribute("aria-current", a.getAttribute("href") === "#" + e.target.id); }); });
+  }, { rootMargin: "-40% 0px -55% 0px" });
+  $$("main section[id]").forEach(function (s) { spy.observe(s); });
+
+  // skill -> evidence filter
+  var on = null;
+  var sb = document.createElement("div"); sb.id = "skillbar"; sb.setAttribute("role", "status");
+  var msg = document.createElement("span"), clr = document.createElement("button");
+  clr.className = "btn ghost small"; clr.type = "button"; clr.textContent = "Clear"; clr.style.margin = "0 0 0 auto";
+  sb.appendChild(msg); sb.appendChild(clr); $("#skills").after(sb);
+  function key(t) { return t.split(" (")[0].toLowerCase(); }
+  function apply(tag) {
+    $$(".tags span").forEach(function (x) { x.classList.toggle("on", !!tag && x === tag); });
+    var items = $$("#project-grid .card").concat($$("#timeline details"));
+    if (!tag) { items.forEach(function (i) { i.classList.remove("dim", "hit"); }); $$("#timeline li").forEach(function (l) { l.classList.remove("dim"); }); sb.classList.remove("show"); return; }
+    var k = key(tag.textContent), n = 0;
+    $$("#project-grid .card").forEach(function (c) { var m = c.textContent.toLowerCase().indexOf(k) > -1; c.classList.toggle("dim", !m); c.classList.toggle("hit", m); n += m; if (m) c.hidden = false; });
+    $$("#timeline details").forEach(function (d) {
+      var m = false;
+      $$("li", d).forEach(function (l) { var h = l.textContent.toLowerCase().indexOf(k) > -1; l.classList.toggle("dim", !h); m = m || h; });
+      d.classList.toggle("dim", !m); d.classList.toggle("hit", m); if (m) { d.open = true; n++; }
+    });
+    msg.textContent = "Showing where " + tag.textContent + " was used (" + n + " match" + (n === 1 ? "" : "es") + ")";
+    sb.classList.add("show");
+  }
+  $$(".tags span").forEach(function (t) {
+    t.tabIndex = 0; t.setAttribute("role", "button");
+    function go() { on = on === t ? null : t; apply(on); }
+    t.addEventListener("click", go);
+    t.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+  });
+  clr.addEventListener("click", function () { on = null; apply(null); });
+
+  // expand all, print2, copy email
+  var ex = $("#expand"), all = false;
+  ex.addEventListener("click", function () { all = !all; $$("#timeline details").forEach(function (d) { d.open = all; }); ex.textContent = all ? "Collapse all" : "Expand all"; });
+  $("#print2").addEventListener("click", function () { window.print(); });
+  $("#copy").addEventListener("click", function () {
+    var m = "prabhatdubey.maildrop@gmail.com", out = $("#copied");
+    (navigator.clipboard ? navigator.clipboard.writeText(m) : Promise.reject()).then(function () { out.textContent = "Email address copied."; }, function () { out.textContent = "Copy failed. Address: " + m; });
+  });
+})();
