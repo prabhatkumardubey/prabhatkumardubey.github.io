@@ -8,6 +8,8 @@ A fast, static portfolio and resume site for a Senior Software Engineer (AI infr
 - Dark-first design with a light/dark toggle that remembers your choice
 - Sticky navigation that highlights the current section, plus a reading-progress bar
 - Years of experience calculated automatically from an Aug 2016 start date (change it at the top of `script.js`)
+- Headline stats link to the projects behind them; patent callout and one-line specialty statement in the intro
+- Optional booking button: set `CALENDAR_URL` near the bottom of `script.js`
 - Headline stats that count up on first view (respects reduced-motion settings)
 - Clickable skills: select a skill to highlight the projects and roles where it was used
 - Experience timeline with expandable roles and an Expand all / Collapse all control

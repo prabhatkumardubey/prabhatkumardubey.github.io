@@ -200,3 +200,29 @@
   btn("All (" + cards.length + ")", "all", true);
   Object.keys(C).forEach(function (k) { if (counts[k]) btn(C[k] + " (" + counts[k] + ")", k, false); });
 })();
+
+// Metrics link to the work behind them
+(function () {
+  var map = { native: "Native Edge Orchestrator", hyperv: "Hypervisor Protection", logs: "Intelligent Log Diagnostics" }, ids = {};
+  [].forEach.call(document.querySelectorAll("#project-grid .card"), function (c) {
+    var t = c.querySelector("h3").textContent;
+    Object.keys(map).forEach(function (k) { if (t.indexOf(map[k]) === 0) { c.id = "proj-" + k; ids[k] = c; } });
+  });
+  [].forEach.call(document.querySelectorAll("#stats a[data-go]"), function (a) {
+    var k = a.dataset.go, card = ids[k]; if (!card) return;
+    a.setAttribute("href", "#proj-" + k);
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (card.hidden) { var all = document.querySelector("#filters button"); if (all) all.click(); }
+      card.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+      card.classList.remove("flash"); void card.offsetWidth; card.classList.add("flash");
+    });
+  });
+})();
+
+// Optional scheduling link: paste a Cal.com or Calendly URL between the quotes to show a booking button.
+(function () {
+  var CALENDAR_URL = "";
+  var b = document.getElementById("cal");
+  if (b && /^https:\/\//.test(CALENDAR_URL)) { b.href = CALENDAR_URL; b.hidden = false; }
+})();
