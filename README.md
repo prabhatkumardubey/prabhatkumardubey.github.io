@@ -13,7 +13,7 @@ A fast, static portfolio and resume site for a Senior Software Engineer (AI infr
 - Project grid filterable by domain: All, AI/GenAI, Cloud & Distributed Systems, Virtualization/Storage
 - Patents spotlight, education, achievements and a contact section with copy-email
 - Downloadable PDF resume (`Prabhat_Dubey_Resume.pdf`) plus `@media print` styles if someone prints the page
-- Patents section: 14 US patents granted, each linked to its public Justia record
+- Patents section: 14 US patents granted, each linked to its public Justia record, with category filters (edit the category map near the bottom of `script.js`)
 - Link-sharing tags (Open Graph and Twitter cards, preview image), favicon, structured data, `robots.txt` and `sitemap.xml`
 - Optional cookie-free visit counts (GoatCounter), off until you add a code
 - Responsive layout, keyboard-accessible controls and visible focus states
@@ -34,6 +34,15 @@ A fast, static portfolio and resume site for a Senior Software Engineer (AI infr
 - **Headline, about text, contact, stats:** edit `index.html`. Stat numbers are the `data-n` attributes in the `#stats` block.
 - **Colors:** change the CSS variables at the top of `style.css` (`:root` for dark, `:root[data-theme="light"]` for light).
 - **Links:** LinkedIn and GitHub URLs are in the hero and contact section of `index.html`.
+
+## Run locally
+Open `index.html` in a browser, or serve the folder:
+
+```
+python3 -m http.server 8000
+```
+
+Then visit http://localhost:8000.
 
 ## Deploy on GitHub Pages
 1. Keep the repo public and named `<username>.github.io`.

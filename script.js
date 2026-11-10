@@ -166,3 +166,28 @@
     });
   });
 })();
+
+// Patent category filters
+(function () {
+  var C = { cloud: "Cloud & Object Storage", inc: "Incremental Backup", tier: "Tiering & Lifecycle", meta: "Metadata & Search", mail: "Email Backup & Restore", sec: "Security & Access Control", sys: "System State & VSS Writers", rec: "Recovery & Restore" };
+  var M = { "11095745": "cloud", "11829630": "cloud tier", "12216549": "cloud", "12026062": "cloud", "11340824": "cloud tier", "12032445": "cloud inc meta", "11809280": "cloud inc tier rec", "11669403": "cloud inc tier rec", "11734124": "cloud inc tier rec", "12625999": "cloud sec", "11442819": "cloud inc meta mail rec", "11442822": "cloud meta mail rec", "11836046": "inc sys", "12105602": "sys" };
+  var list = document.querySelector("ul.patents"), bar = document.getElementById("pfilters");
+  if (!list || !bar) return;
+  var cards = [].slice.call(list.querySelectorAll("li.card")), counts = {};
+  cards.forEach(function (li) {
+    var m = li.querySelector("a").href.match(/(\d+)\/?$/), k = ((m && M[m[1]]) || "").split(" ").filter(Boolean);
+    li.dataset.cats = k.join(" ");
+    k.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+    if (k.length) { var p = document.createElement("p"); p.className = "muted"; p.textContent = k.map(function (x) { return C[x]; }).join(" \u00b7 "); li.appendChild(p); }
+  });
+  function btn(label, key, on) {
+    var b = document.createElement("button"); b.type = "button"; b.textContent = label; b.setAttribute("aria-pressed", on);
+    b.addEventListener("click", function () {
+      [].forEach.call(bar.querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", x === b); });
+      cards.forEach(function (li) { li.hidden = key !== "all" && li.dataset.cats.split(" ").indexOf(key) < 0; });
+    });
+    bar.appendChild(b);
+  }
+  btn("All (" + cards.length + ")", "all", true);
+  Object.keys(C).forEach(function (k) { if (counts[k]) btn(C[k] + " (" + counts[k] + ")", k, false); });
+})();
