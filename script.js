@@ -23,7 +23,7 @@
       "Architected Active Directory Granular Level Restore (AD GLR) system with iSCSI-based live mount, reducing recovery turnaround from hours to minutes for enterprise AD environments.",
       "Served as Scrum Lead for AD GLR epic; managed sprint planning, backlog refinement, and delivery tracking for a team of 8 across 4 sprints.",
       "Optimized backup verification pipeline using SQLite and VSS integration, reducing recovery time by 25% through query optimization and batch processing.",
-      "Filed 13 patent applications covering Office 365 backup, cloud storage optimization, and virtualization recovery techniques; 10 patents granted globally."] },
+      "Named inventor on 14 granted US patents covering cloud storage optimization, Office 365 backup, and virtualization recovery techniques."] },
     { role: "Software Engineer", co: "Micro Focus (now OpenText)", meta: "Bengaluru, India | Aug 2016 – Nov 2019", pts: [
       "Built core modules for Directory and Resource Administrator (DRA) product using C++/.NET backend and Angular frontend, improving feature delivery velocity by 20%.",
       "Developed enterprise desktop applications using WCF and WinForms for administrative workflows, service communication, and configuration management within the DRA ecosystem.",
@@ -86,7 +86,6 @@
     var next = root.dataset.theme === "dark" ? "light" : "dark"; root.dataset.theme = next;
     try { localStorage.setItem("theme", next); } catch (e) {}
   });
-  $("print").addEventListener("click", function () { window.print(); });
 })();
 
 (function () {
@@ -149,9 +148,21 @@
   // expand all, print2, copy email
   var ex = $("#expand"), all = false;
   ex.addEventListener("click", function () { all = !all; $$("#timeline details").forEach(function (d) { d.open = all; }); ex.textContent = all ? "Collapse all" : "Expand all"; });
-  $("#print2").addEventListener("click", function () { window.print(); });
   $("#copy").addEventListener("click", function () {
     var m = "prabhatdubey.maildrop@gmail.com", out = $("#copied");
     (navigator.clipboard ? navigator.clipboard.writeText(m) : Promise.reject()).then(function () { out.textContent = "Email address copied."; }, function () { out.textContent = "Copy failed. Address: " + m; });
+  });
+})();
+
+// Lowest priority: optional cookie-free analytics (GoatCounter). Put your GoatCounter code between the quotes to turn it on.
+(function () {
+  var CODE = "";
+  if (!CODE || navigator.doNotTrack === "1") return;
+  addEventListener("load", function () {
+    (window.requestIdleCallback || setTimeout)(function () {
+      var s = document.createElement("script"); s.async = true; s.src = "https://gc.zgo.at/count.js";
+      s.setAttribute("data-goatcounter", "https://" + CODE + ".goatcounter.com/count"); document.body.appendChild(s);
+      var f = document.querySelector("footer p"); if (f) f.textContent += " · Privacy-friendly, cookie-free visit counts.";
+    });
   });
 })();

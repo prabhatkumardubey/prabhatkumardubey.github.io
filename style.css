@@ -100,3 +100,9 @@ a.btn.ghost{color:var(--text)}
 .social a:hover{border-color:var(--accent);color:var(--accent)}
 .social .ic{margin:0;width:1.5rem;height:1.5rem}
 @media print{.social{display:none}}
+
+.patents{list-style:none;padding:0;margin:1.2rem 0 .6rem}
+.patents .card{margin:0}
+.patents a{text-decoration:none}
+.patents a:hover b{text-decoration:underline}
+.patents p{font-size:.9rem}

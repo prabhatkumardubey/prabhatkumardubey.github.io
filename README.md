@@ -12,7 +12,10 @@ A fast, static portfolio and resume site for a Senior Software Engineer (AI infr
 - Experience timeline with expandable roles and an Expand all / Collapse all control
 - Project grid filterable by domain: All, AI/GenAI, Cloud & Distributed Systems, Virtualization/Storage
 - Patents spotlight, education, achievements and a contact section with copy-email
-- "Download PDF resume" button backed by `@media print` styles for a clean, recruiter-friendly PDF
+- Downloadable PDF resume (`Prabhat_Dubey_Resume.pdf`) plus `@media print` styles if someone prints the page
+- Patents section: 14 US patents granted, each linked to its public Justia record
+- Link-sharing tags (Open Graph and Twitter cards, preview image), favicon, structured data, `robots.txt` and `sitemap.xml`
+- Optional cookie-free visit counts (GoatCounter), off until you add a code
 - Responsive layout, keyboard-accessible controls and visible focus states
 
 ## Files
@@ -21,6 +24,9 @@ A fast, static portfolio and resume site for a Senior Software Engineer (AI infr
 | `index.html` | Page structure, hero, about, patents, education, contact |
 | `style.css` | Theme variables, layout, print styles |
 | `script.js` | Resume data (skills, experience, projects, achievements) and interactions |
+| `Prabhat_Dubey_Resume.pdf` | Downloadable resume |
+| `og-image.png`, `favicon.svg` | Link-preview image and site icon |
+| `robots.txt`, `sitemap.xml` | Search engine files |
 | `README.md` | This file |
 
 ## Updating content
@@ -44,5 +50,8 @@ Then visit http://localhost:8000.
 3. In Settings → Pages, set Source to "Deploy from a branch", branch `main`, folder `/ (root)`.
 4. Changes go live within a minute or two of each push.
 
-## Saving the resume as PDF
-Click "Download PDF resume" (or press Ctrl/Cmd+P), choose "Save as PDF", and use A4 or Letter with default margins. Print styles switch to a white background and hide the nav and buttons.
+## Resume PDF
+The download buttons serve `Prabhat_Dubey_Resume.pdf`. Replace that file whenever your resume changes, keeping the same name.
+
+## Analytics (optional)
+Sign up at goatcounter.com, choose a site code, then set `var CODE = "your-code"` at the bottom of `script.js`. It loads last, skips visitors with Do Not Track, and uses no cookies.
