@@ -111,3 +111,5 @@ a.btn.ghost{color:var(--text)}
 @media print{.subhead{break-after:avoid}}
 
 @media print{.patents .card[hidden]{display:block}}
+
+.spotlight + .filters{margin-top:1.75rem}
