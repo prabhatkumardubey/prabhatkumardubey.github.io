@@ -91,3 +91,6 @@ a.btn.ghost{color:var(--text)}
   .nav nav{display:flex;order:3;width:100%;overflow-x:auto;flex-wrap:nowrap;white-space:nowrap}
 }
 @media print{#progress,.status,.cta,.hint,#skillbar,#contact .cta,#expand{display:none}.stats{border-color:#999}.stats b{font-size:16pt}.dim{opacity:1}}
+
+.ic{width:1.05em;height:1.05em;vertical-align:-.15em;margin-right:.4em}
+.contact a:has(.ic){white-space:nowrap}
