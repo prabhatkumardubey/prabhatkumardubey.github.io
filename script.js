@@ -1,3 +1,10 @@
+// Years of experience: calculated from career start (Aug 2016), so it updates itself every year.
+(function () {
+  var now = new Date(), y = now.getFullYear() - 2016;
+  if (now < new Date(now.getFullYear(), 7, 1)) y--;
+  [].forEach.call(document.querySelectorAll(".yrs"), function (e) { e.textContent = y; });
+  var b = document.querySelector("[data-years]"); if (b) b.dataset.n = y;
+})();
 (function () {
   var skills = {
     "Languages": ["C++","Java","Python","C#","Go","TypeScript"],
