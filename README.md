@@ -35,15 +35,6 @@ A fast, static portfolio and resume site for a Senior Software Engineer (AI infr
 - **Colors:** change the CSS variables at the top of `style.css` (`:root` for dark, `:root[data-theme="light"]` for light).
 - **Links:** LinkedIn and GitHub URLs are in the hero and contact section of `index.html`.
 
-## Run locally
-Open `index.html` in a browser, or serve the folder:
-
-```
-python3 -m http.server 8000
-```
-
-Then visit http://localhost:8000.
-
 ## Deploy on GitHub Pages
 1. Keep the repo public and named `<username>.github.io`.
 2. Push changes to `main`.
