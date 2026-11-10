@@ -106,3 +106,6 @@ a.btn.ghost{color:var(--text)}
 .patents a{text-decoration:none}
 .patents a:hover b{text-decoration:underline}
 .patents p{font-size:.9rem}
+
+.subhead{font-size:1.1rem;margin:1.6rem 0 .8rem}
+@media print{.subhead{break-after:avoid}}
