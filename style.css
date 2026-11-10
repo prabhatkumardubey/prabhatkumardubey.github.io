@@ -94,3 +94,9 @@ a.btn.ghost{color:var(--text)}
 
 .ic{width:1.05em;height:1.05em;vertical-align:-.15em;margin-right:.4em}
 .contact a:has(.ic){white-space:nowrap}
+
+.social{display:flex;gap:.7rem;margin:1.2rem 0 0}
+.social a{display:grid;place-items:center;width:2.9rem;height:2.9rem;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);transition:border-color .15s,color .15s}
+.social a:hover{border-color:var(--accent);color:var(--accent)}
+.social .ic{margin:0;width:1.5rem;height:1.5rem}
+@media print{.social{display:none}}
