@@ -25,7 +25,7 @@ A fast, static portfolio and resume site for a Senior Software Engineer (AI infr
 | `style.css` | Theme variables, layout, print styles |
 | `script.js` | Resume data (skills, experience, projects, achievements) and interactions |
 | `Prabhat_Dubey_Resume.pdf` | Downloadable resume |
-| `og-image.png`, `favicon.svg` | Link-preview image and site icon |
+| `og-image.png`, `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` | Link-preview image and site icon |
 | `robots.txt`, `sitemap.xml` | Search engine files |
 | `README.md` | This file |
 
