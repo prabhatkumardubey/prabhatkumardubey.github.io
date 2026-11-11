@@ -1,6 +1,6 @@
 # Prabhat Dubey: Portfolio & Resume
 
-Live site: https://prabhatkumardubey.github.io
+Live site: https://prabhatdubey.github.io
 
 A fast, static portfolio and resume site for a Senior Software Engineer (AI infrastructure, distributed systems, data protection). Plain HTML, CSS and vanilla JavaScript. No build step and no dependencies apart from Google Fonts.
 
